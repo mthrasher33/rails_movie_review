@@ -1,0 +1,18 @@
+<head>
+  <title><%= h(yield(:title) || "Untitled") %></title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'jquery.1.3.2.min' %>
+  <%= yield(:head) %>
+</head>
+<h1> Did it work? </h1>
+<% content_for (:head) do %>
+<%= stylesheet_link_tag "jquery.Jcrop" %>
+<%= javascript_include_tag "jquery.Jcrop.min" %>
+<script type="text/javascript">
+  $(function() {
+    $('#cropbox').Jcrop();
+  });
+</script>
+<% end %>
+
+<%= image_tag @movie.image.url(:large), :id => "cropbox" %>
